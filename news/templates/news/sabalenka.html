@@ -1,0 +1,87 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>Aryna Sabalenka decidió no participar en los Juegos Olímpicos de París 2024</h1>
+    <img src="{% static 'news/images/Sabalenka.jpg' %}" alt="Sabalenka">
+    <p>El inicio de los Juegos Olímpicos de París 2024 está cada día más cerca. Con la entry list ya confirmada tanto en el apartado masculinos como en el femenino, ya se tiene en claro quienes serán los jugadores y jugadoras que participarán en la máxima cita deportiva. Sin embargo, con el correr de los días han aparecido varias bajas sorpresivas. Y una de ellas es la de Aryna Sabalenka.</p>
+    <p>La bielorrusa, ex N°1 del mundo y actualmente ocupando el tercer lugar del ranking mundial WTA, comunicó desde Berlín (disputará el WTA 500 de aquella ciudad), que no dirá presente en la capital francesa y no disputará sus segundos Juegos Olímpicos luego de hacer segunda ronda en Tokio 2020.</p>
+    <p>¿Los motivos? El calendario. "Es demasiado para el calendario. Tomé la decisión de cuidar mi salud. Es demasiado cambiar la superficie" manifestó la ganadora de dos torneos de Grand Slam.</p>
+    <p>De esta manera, el torneo femenino se quedará sin una de sus principales candidatas, dejando como máximas exponentes a la medalla de oro a Iga Swiatek, Coco Gauff y Elena Rybakina.</p>
+
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+    
+</div>
+
+{% endblock %}

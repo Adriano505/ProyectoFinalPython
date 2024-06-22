@@ -1,0 +1,44 @@
+# SportsNews
+
+Bienvenido a **SportsNews**, una plataforma dinámica dedicada a los deporte de todo el mundo. Desde fútbol y baloncesto hasta tenis, Fórmula 1 y UFC, este sitio web ofrece cobertura exhaustiva, análisis detallados y las últimas noticias del mundo del deporte.
+
+## Características
+
+- **Contenido Exclusivo**: Accede a artículos detallados y análisis profundos de tus deportes y eventos favoritos.
+- **Registro de Usuarios**: Regístrate para obtener una cuenta personalizada y disfruta de una experiencia de navegación personalizada.
+- **Interacción y Comunidad**: Participa en discusiones con otros aficionados y comparte tu pasión por el deporte.
+
+## Tecnologías Utilizadas
+
+- **Backend**: Python, Django
+- **Frontend**: HTML, CSS, JavaScript
+- **Base de Datos**: SQLite (default de Django para desarrollo), PostgreSQL (recomendado para producción)
+
+## Instalación
+
+Para ejecutar este proyecto localmente, sigue estos pasos:
+
+1. Clona el repositorio.
+2. Instala las dependencias.
+3. Configura tu base de datos en `settings.py`:
+
+- Para desarrollo:
+  ```python
+  DATABASES = {
+      'default': {
+          'ENGINE': 'django.db.backends.sqlite3',
+          'NAME': BASE_DIR / 'db.sqlite3',
+      }
+  }
+  ```
+- Para producción, configura PostgreSQL u otra base de datos de tu elección.
+
+4. Realiza las migraciones: python manage.py migrate
+
+5. Ejecuta el servidor: python manage.py runserver
+
+
+Abre tu navegador y visita `http://127.0.0.1:8000` para empezar a explorar **SportsNews**.
+
+¡Gracias por visitar!
+

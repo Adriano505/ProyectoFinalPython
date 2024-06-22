@@ -1,0 +1,118 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+    }
+    .background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('{% static 'news/images/Tennis.jpg' %}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: opacity 0.5s ease-out;
+        z-index: -1;
+    }
+    .content {
+        display: flex;
+        justify-content: space-around; 
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+        padding: 30px;
+        align-items: flex-start; 
+    }
+    .special-article-card {
+        cursor: pointer;
+        width: 100%;
+        max-width: 300px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        margin: 20px;
+        background-color: rgba(249, 249, 249, 0.9);
+    }
+    .special-article-card:hover {
+        transform: translateY(-5px);
+    }
+    .special-article-card img {
+        width: 100%;
+        height: 360px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        object-fit: cover;
+    }
+    .special-article-card h3 {
+        background-color: black;
+        color: white;
+        padding: 8px 10px;
+        margin: 0;
+        text-align: center;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+</style>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const background = document.querySelector('.background-image');
+    if (background) {
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            const opacity = 1 - scrollY / 500;
+            background.style.opacity = opacity;
+        });
+    } else {
+        console.error('Background element not found');
+    }
+});
+</script>
+<div class="background-image"></div>
+<div class="content">
+    {% for articulo in articulos %}
+    <div class="special-article-card" onclick="location.href='{% url 'article_detail' articulo.id %}';">
+        <img src="{% static 'news/images/'|add:articulo.image %}" alt="{{ articulo.title }}">
+        <h3>{{ articulo.title }}</h3>
+    </div>
+    {% empty %}
+        <div class="special-article-card" onclick="location.href='{% url 'sabalenka' %}';">
+        <img src="{% static 'news/images/Sabalenka.jpg' %}" alt="sabalenka">
+        <h3>Aryna Sabalenka decidió no participar en los Juegos Olímpicos</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'murray' %}';">
+        <img src="{% static 'news/images/murray.jpg' %}" alt="murray">
+        <h3>Andy Murray participará en los Juegos Olímpicos de París 2024</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'sinner' %}';">
+        <img src="{% static 'news/images/sinner.png' %}" alt="sinner">
+        <h3>Jannik Sinner: horario y cómo ver el debut del N°1 del mundo</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'nadal' %}';">
+        <img src="{% static 'news/images/nadal.jpg' %}" alt="nadal">
+        <h3>Oficial: Rafael Nadal no jugará Wimbledon</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'djokovic' %}';">
+        <img src="{% static 'news/images/djokovic.png' %}" alt="djokovic">
+        <h3>Djokovic no se da por vencido: entrenó por primera vez post operación y sueña con Wimbledon</h3>
+    </div>
+        <div class="special-article-card"  onclick="location.href='{% url 'alcaraz' %}';">
+        <img src="{% static 'news/images/alcaraz.jpg' %}" alt="alcaraz">
+        <h3>Djokovic no se da por vencido: entrenó por primera vez post operación y sueña con Wimbledon</h3>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

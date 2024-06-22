@@ -1,0 +1,94 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>UFC 303: PEREIRA VS PROCHAZKA Y ORTEGA VS LOPES</h1>
+    <h3>Se Confirmaron Nuevos Choques Para La Cartelera Del Sábado 29 De Junio En Las Vegas.</h3>
+    <img src="{% static 'news/images/Jiri.jpg' %}" alt="Libres NBA">
+    <p>Alex Pereira y Jiri Prochazka se enfrentarán en una revancha por el cinturón semicompleto en la estelar de UFC 303. El combate coestelar será protagonizado por Brian Ortega y Diego Lopes, quienes chocarán en una pelea de altas implicancias en la cima del peso pluma.</p>
+    <p>La revancha entre Alex Pereira y Jiri Prochazka tiene fecha oficial: 29 de Junio en la función de International Fight Week en Las Vegas. El primer enfrentamiento fue en UFC 295, en Noviembre de 2023 y terminó con triunfo para 'Poatan' por TKO en el segundo asalto.</p>
+    <p>Tras la victoria, el brasileño se quedó con el cinturón vacante de las 205 libras para luego defender el cetro con un triunfo ante Jamahal Hill por nocaut. Por su parte, Jiri se recuperó con una finalización por golpes a Aleksandar Rakic.</p>
+    <p>En la coestelar, el número tres del ránking, Brian Ortega, se medirá al 'brasileño más mexicano', Diego Lopes.</p>
+    <p>'T-City' tuvo un insuperable comienzo de año al someter a Yaír Rodríguez en UFC México y dejar claro que está listo para un nuevo intento por el cinturón de las 145 libras tras sus oportunidades en 2018 y en 2021.</p>
+    <p>Frente suyo estará Diego Lopes, quien se ha convertido en una de las apariciones más espectaculares de los últimos años a base de finalizaciones e identificación con los fans. El ganador de este duelo dará un paso contundente hacia un combate con el cinturón pluma.</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+    {% if request.user.is_superuser %}
+    <div class="link-to-article">
+        <a href="{% url 'delete_article' slug='suiza' %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este artículo?');">Eliminar este artículo</a>
+    </div>
+    {% endif %}
+    
+</div>
+
+{% endblock %}

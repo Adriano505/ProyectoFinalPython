@@ -1,0 +1,87 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>Djokovic no se da por vencido: entrenó por primera vez post operación y sueña con Wimbledon</h1>
+    <img src="{% static 'news/images/djokovic.png' %}" alt="djokovic">
+    <p>"Lo único imposible es aquello que no se intenta" reza una motivadora frase, que probablemente haya tomado como cabecera el tenista serbio Novak Djokovic (3°), quien recientemente se retiró por lesión de Roland Garros, se sometió a una operación de meniscos y sueña con una recuperación récord para presentarse en Wimbledon.</p>
+    <p>Tras fallar en la revalidación del trofeo en el polvo de ladrillo francés, el legendario balcánico, de 37 años y dueño de 98 títulos, que cedió la cima del ranking y protagoniza una inusual temporada, se mostró de buen ánimo a través de redes sociales al publicar un video sobre su primer entrenamiento luego de la cirugía, ejercitándose en el gimnasio para fortalecer la zona afectada y mantener las esperanzas intactas de participar por 19ª ocasión en el césped londinense.</p>
+    <p>De esta manera, uno de los integrantes del histórico Big 3, quien ya se proclamó en siete oportunidades en el Grand Slam británico, totalizando 92 triunfos y 11 derrotas, se aferra hasta la última llama de ilusión, encendida a raíz del antecedente del estadounidense Taylor Fritz (13°), el cual sufrió exactamente el mismo inconveniente en Major francés en 2021, cuando aceleró los plazos y asistió en el All England.</p>
+    <p>Cabe recordar que Djokovic defiende 1.200 puntos en el inmaculado pasto inglés, donde falló en la definición contra el español Carlos Alcaraz (2°) en 2023, siendo vitales para conservar al menos el tercer escalafón en el ordenamiento, puesto que siguen de cerca el alemán Alexander Zverev (4°) y el ruso Daniil Medvedev (5°).</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+
+    
+</div>
+
+{% endblock %}

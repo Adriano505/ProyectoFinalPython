@@ -1,0 +1,91 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>Cómo los fantasmas de LeBron y Celtics impulsan al dúo Kyrie-Luka</h1>
+    <h3>Las lecciones que Kyrie Irving aprendió con LeBron y en Boston ahora guían su tutoría a Luka Doncic, quien en muchos sentidos refleja al propio Rey.</h3>
+    <p>MUCHO ANTES DE QUE ESTOS Dallas Mavericks fueran la elección de alguien para salir de la Conferencia Oeste, antes de que vencieran a los LA Clippers, los Oklahoma City Thunder y los Minnesota Timberwolves para llegar al escenario más brillante del baloncesto por primera vez en 13 años, Kyrie Irving había comenzado a reflexionar sobre sus tres años con LeBron James, su paso por los Boston Celtics y cómo esos tiempos lo habían cambiado.</p>
+    <p>"En aquel entonces no sabía cómo manejar esas personalidades. Empecé cada día sintiendo que tenía que ser mejor que mis compañeros de equipo", le dijo Irving a ESPN. "Éramos muy, muy competitivos, y lo único que siempre les inculqué cuando llegué allí fue: dejar de tener miedo de desafiar a los demás. Eso era algo que compartíamos como jugadores más jóvenes: queríamos establecernos como un gran equipo, así es como empezamos".</p>
+    <p>Durante toda la temporada había tenido cuidado de no crear distracciones para él o los Mavericks al revisar su controvertido pasado. Porque por mucho que el tiempo de Irving en Dallas le haya ofrecido un nuevo comienzo, también ha estado lleno de espejos en los que reflexionar sobre su carrera.</p>
+    <p>Su coprotagonista con los Mavericks, Luka Doncic, es probablemente el facsímil más cercano en la NBA, en habilidad y rol, a James, su ex coprotagonista con los Cleveland Cavaliers.</p>
+    <p>"Mi papá nos llevó a ver a los Nets en las finales cuando yo estaba en cuarto o quinto grado. Nos sentamos muy arriba en las hemorragias nasales", comentó Irving. "Y al ver eso de cerca, fue cuando fui a casa y escribí en mi armario para verlo todos los días: 'Voy a la NBA'"</p>
+    <p>Doncic respondió en el Juego 4 con 29 puntos brillantes y eficientes para llevar a los Mavs a una victoria aplastante y extender la serie al Juego 5 en Boston a las 8:30 p.m. hora del este.</p>
+    <p>"Esta es su primera oportunidad y su primera muestra de lo que es estar en este escenario y no jugar a la altura de tus capacidades... donde cada error se magnifica", dijo Irving sobre Doncic. "Y respondió muy bien. Lo esperaba. Creo que mucha gente que ha visto a Luka y sabe que Luka lo esperaba. Simplemente no sabía cómo iba a suceder. Hizo que sucedieran algunas cosas de las que estaba muy orgulloso".</p>
+    <img src="{% static 'news/images/lukayirving.png' %}" alt="Luka y Irving">
+    <p>De la mano de sus jóvenes figuras, España demostró por qué es uno de los equipos a batir en este torneo. Controlando el juego desde el inicio, el equipo español no solo mostró su capacidad ofensiva, sino también una solidez defensiva que dejó poco espacio para las respuestas de sus rivales.</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">De la mano de sus jóvenes figuras, Alemania jugó un partido perfecto y goleó a Escocia</a></h2>
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,143 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block title %}Register - Sports News{% endblock %}
+
+{% block content %}
+<style>
+
+    body {
+        background-image: url("{% static 'news/images/dondo.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .register-box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        padding: 40px;
+        margin: 20px auto;
+        transform: translate(-50%, -55%);
+        background: rgba(0,0,0,.9);
+        box-sizing: border-box;
+        box-shadow: 0 15px 25px rgba(0,0,0,.6);
+        border-radius: 10px;
+        color: #fff;
+    }
+
+    .register-box h1 {
+        margin: 0 0 30px;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    .register-box .user-box {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .register-box .user-box input {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        border: none;
+        border-bottom: 1px solid #fff;
+        outline: none;
+        background: transparent;
+    }
+
+    .register-box .user-box label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 10px 0;
+        font-size: 16px;
+        color: #fff;
+        pointer-events: none;
+        transition: .5s;
+    }
+
+    .register-box .user-box input:focus ~ label,
+    .register-box .user-box input:valid ~ label {
+        top: -20px;
+        left: 0;
+        color: #fff;
+        font-size: 12px;
+    }
+
+    .register-box button {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #fff;
+        font-size: 16px;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: .5s;
+        margin-top: 40px;
+        letter-spacing: 3px;
+        background: #272727;
+        border: none;
+        cursor: pointer;
+    }
+
+    .register-box button:hover {
+        background: #fff;
+        color: #272727;
+        border-radius: 5px;
+    }
+
+    .register-box p {
+        color: #aaa;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .register-box a {
+        color: #fff;
+        text-decoration: none;
+    }
+    .register-box a:hover {
+        color: #aaa;
+    }
+
+</style>
+
+<div class="register-box">
+    <h1>Registro</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="user-box">
+            {{ form.username }}
+            <label>Username</label>
+            {{ form.username.errors }}
+        </div>
+        <div class="user-box">
+            {{ form.email }}
+            <label>Email</label>
+            {{ form.email.errors }}
+        </div>
+        <div class="user-box">
+            {{ form.password1 }}
+            <label>Password</label>
+            {{ form.password1.errors }}
+        </div>
+        <div class="user-box">
+            {{ form.password2 }}
+            <label>Confirm Password</label>
+            {{ form.password2.errors }}
+        </div>
+        <button type="submit">Registrar</button>
+    </form>
+    <p>¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesión</a></p>
+</div>
+{% endblock %}

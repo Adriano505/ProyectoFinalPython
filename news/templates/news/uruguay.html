@@ -1,0 +1,90 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative;  /* O 'fixed', dependiendo de tu diseño */
+        z-index: 10;  /* Suficientemente alto para estar por encima del fondo y el contenido del artículo */
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; /* Fija el pseudo-elemento, no el body */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/Uruguay.png" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden;
+
+    }
+
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>La Selección Uruguaya ya tiene a todo su plantel en Miami y contará con tres sparrings</h1>
+    <p>Este domingo, los integrantes de la Selección Uruguaya que faltaban llegar a Miami se sumaron a sus compañeros y así la Celeste completó su plantel para preparar la Copa América.</p>
+    <p>Además de los 13 futbolistas que se encontraban trabajando bajo las órdenes de Marcelo Bielsa desde el amistoso disputado contra México el pasado miércoles, este domingo llegaron los que estaban entrenando en el Complejo Celeste y dos que todavía no se habían sumado.</p>
+    <p>De esa manera, arribaron a Miami desde Uruguay este domingo Ronald Araujo, Agustín Canobbio, Nicolás De La Cruz, Giorgian De Arrascaeta, Franco Israel, Guillermo Varela, Emiliano Martínez, Matías Viña, Nicolás Marichal, Cristian Olivera y Brian Ocampo.</p>
+    <p>Por su parte, Luis Suárez y Federico Valverde retornaron de sus vacaciones y completaron el plantel de Marcelo Bielsa.</p>
+    <img src="{% static 'news/images/Uruguay.png' %}" alt="Uruguay victoria">
+    <p>De la mano de sus jóvenes figuras, España demostró por qué es uno de los equipos a batir en este torneo. Controlando el juego desde el inicio, el equipo español no solo mostró su capacidad ofensiva, sino también una solidez defensiva que dejó poco espacio para las respuestas de sus rivales.</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'argentina' %}">La Selección Argentina llegó a Atlanta </a></h2>
+    </div>
+
+    
+</div>
+
+{% endblock %}

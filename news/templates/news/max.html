@@ -1,0 +1,93 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>Max Verstappen no desaprovechó la oportunidad y ganó en Canadá</h1>
+    <h3>El campeón del mundo llevó a su no favorito Red Bull al puesto más alto en Montreal</h3>
+    <img src="{% static 'news/images/max.png' %}" alt="max">
+    <p>MONTREAL, Canadá - Max Verstappen de Red Bull se impuso en un emocionante Gran Premio de Canadá, superando a Lando Norris de McLaren en la victoria por 3.8 segundos en la bandera a cuadros.</p>
+    <p>George Russell, Norris y Verstappen lideraron la carrera en diferentes fases, y Norris perdió el liderato ante Verstappen como resultado un coche de seguridad en la vuelta 25 de 70.</p>
+    <p>Una vez al frente, Verstappen evitó una serie de posibles obstáculos, incluido un cambio de neumáticos intermedios a lisos y un segundo coche de seguridad en la vuelta 53, para conseguir su sexta victoria de la temporada.</p>
+    <p>Max Verstappen dijo después: "Fue una carrera bastante loca, estaban sucediendo muchas cosas y teníamos que estar al tanto de nuestras decisiones".</p>
+    <p>"Como equipo lo hicimos muy bien hoy, mantuvimos la calma y entramos en boxes en el momento adecuado, el coche de seguridad funcionó muy bien para nosotros, pero incluso después de eso manejamos las diferencias bastante bien".</p>
+    <p>"Me encanta, fue muy divertido, ese tipo de carreras que necesitas de vez en cuando".</p>
+    <p>Mientras tanto, Norris señaló: "Fue [salvaje]. Fue un caos, fue lleno de acontecimientos para ser honesto, sentí que hice una buena carrera, todo el tiempo, de principio a fin".</p>
+    <p>"Los dos primeros stints fueron fuertes, tuve un ritmo increíble, luego el coche de seguridad me superó – en Miami me ayudó, ahora no. Honestamente, pensé que fue una carrera bastante perfecta por mi parte. Fue un poco desafortunado, pero en general fue muy divertido”.</p>
+    <p>"Estas condiciones eran muy estresantes dentro del coche, pero muy agradables al mismo tiempo".</p>
+   
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+
+    
+</div>
+
+{% endblock %}

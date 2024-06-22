@@ -1,0 +1,34 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="special-article">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content }}</p>
+    <img src="{{ article.image.url }}" alt="{{ article.title }}">
+
+    <div class="comments-section">
+        <h2>Comentarios</h2>
+        {% for comment in comments %}
+        <div class="comment">
+            <p><strong>{{ comment.user.username }} dice:</strong></p>
+            <p>{{ comment.content }}</p>
+            <p>{{ comment.created_date }}</p>
+        </div>
+        {% empty %}
+        <p>No hay comentarios aún.</p>
+        {% endfor %}
+
+        {% if user.is_authenticated %}
+        <h3>Añadir comentario</h3>
+        <form method="post">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit">Enviar comentario</button>
+        </form>
+        {% else %}
+        <p>Debes <a href="{% url 'login' %}">iniciar sesión</a> para comentar.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

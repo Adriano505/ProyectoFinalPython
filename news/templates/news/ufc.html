@@ -1,0 +1,148 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        overflow-x: hidden;
+    }
+    .background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('{% static 'news/images/Jirii.jpg' %}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: opacity 0.5s ease-out;
+        z-index: -1;
+    }
+    .fight-title {
+        position: fixed;
+        top: 20%; 
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        text-align: center;
+        transition: opacity 0.5s ease-out;
+    }
+    .small-text {
+        font-size: 24px;
+        color: white;
+        display: block;
+    }
+    .large-text {
+        font-size: 48px; 
+        color: white;
+        font-weight: bold;
+        display: block;
+    }
+    .vs-text {
+        font-size: 24px;
+        color: white;
+        display: block;
+        border-top: 2px solid white; 
+        padding-top: 5px;
+    }
+    .content {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+        padding: 30px;
+        align-items: flex-start;
+        margin-top: 100vh;
+    }
+    .special-article-card {
+        cursor: pointer;
+        width: 100%;
+        max-width: 300px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        margin: 20px;
+        background-color: rgba(249, 249, 249, 0.9);
+    }
+    .special-article-card:hover {
+        transform: translateY(-5px);
+    }
+    .special-article-card img {
+        width: 100%;
+        height: 360px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+    .special-article-card h3 {
+        background-color: black;
+        color: white;
+        padding: 8px 10px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+</style>
+<script>
+    window.addEventListener('scroll', function() {
+        const background = document.querySelector('.background-image');
+        const fightTitle = document.querySelector('.fight-title');
+        const scrollY = window.scrollY;
+        const opacity = 1 - scrollY / 500;
+        console.log("Scroll Y: " + scrollY + ", Opacity: " + opacity); 
+        background.style.opacity = opacity;
+        fightTitle.style.opacity = opacity;
+    });
+</script>
+<div class="background-image"></div>
+<div class="fight-title">
+    <span class="small-text">UFC 303</span>
+    <span class="large-text">PEREIRA</span>
+    <span class="vs-text">vs</span>
+    <span class="large-text">PROCHÁZKA 2</span>
+</div>
+<div class="content">
+    {% for articulo in articulos %}
+    <div class="special-article-card" onclick="location.href='{% url 'article_detail' articulo.id %}';">
+        <img src="{% static 'news/images/'|add:articulo.image %}" alt="{{ articulo.title }}">
+        <h3>{{ articulo.title }}</h3>
+    </div>
+    {% empty %}
+        <div class="special-article-card" onclick="location.href='{% url 'connor' %}';">
+        <img src="{% static 'news/images/MacGregor.jpg' %}" alt="Connor">
+        <h3>Conor McGregor y su travesía en UFC: de fenómeno a superestrella</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'trecientostres' %}';">
+        <img src="{% static 'news/images/Jiri.jpg' %}" alt="trecientostres">
+        <h3>UFC 303: PEREIRA VS PROCHAZKA Y ORTEGA VS LOPES</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'dominick' %}';">
+        <img src="{% static 'news/images/dominick.jpg' %}" alt="dominick">
+        <h3>DOMINICK REYES REENCUENTRA EL TRIUNFO CON KO</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'poirier' %}';">
+        <img src="{% static 'news/images/Poirier.jpg' %}" alt="poirier">
+        <h3>¿QUÉ SIGUE PARA DUSTIN POIRIER?</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'islam' %}';">
+        <img src="{% static 'news/images/islam.jpg' %}" alt="islam">
+        <h3>ISLAM MAKHACHEV: "SUEÑO CON SER DOBLE CAMPEÓN"</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'makvspoi' %}';">
+        <img src="{% static 'news/images/makvspoi.jpg' %}" alt="makvspoi">
+        <h3>UFC 302: MAKHACHEV Y POIRIER DAN 'PELEA DE LA NOCHE'</h3>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

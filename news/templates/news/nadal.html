@@ -1,0 +1,87 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>Oficial: Rafael Nadal no jugará Wimbledon</h1>
+    <img src="{% static 'news/images/nadal.jpg' %}" alt="nadal">
+    <p>Durante el anuncio de la convocatoria para los Juegos Olímpicos de París 2024, el capitán del equipo español, David Ferrer, anunció que Rafael Nadal va a preparar a conciencia la cita olímpica renunciando a Wimbledon. Será el sexto que se pierda en su carrera.</p>
+    <p>Además, Ferrer también ve opciones de que Nadal, que a sus 38 años disputará sus cuartos Juegos Olímpicos, pelee de nuevo por una medalla en el cuadro de ingles, como sucedió en Beijing 2008, cuando se colgó la de Oro.</p>
+    <p>"Yo creo que Rafa llegará muy bien a París. Su objetivo son los JJOO y no lleva un desgaste excesivo de todo el año porque ha estado con la lesión, y eso es importante para él, llegar fresco mentalmente. Y después de Roland Garros, donde ya compitió a un gran nivel, yo tengo confianza en que nos dé una alegría", concluyó.</p>
+    <p>Por otro lado, podría jugar a mediados de julio en Hamburgo en pero también y, sobretodo, en dobles con Carlos Alcaraz para preparar el torneo olímpico.</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+
+    
+</div>
+
+{% endblock %}

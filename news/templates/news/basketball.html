@@ -1,0 +1,112 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+    .background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('{% static 'news/images/NBA.jpg' %}');
+        background-size: cover;
+        background-position: center; 
+        background-repeat: no-repeat;
+        transition: opacity 0.5s ease-out;
+        z-index: -1;
+    }
+    .content {
+        display: flex;
+        justify-content: space-around; 
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 2;
+        padding: 30px;
+        align-items: flex-start;
+    }
+    .special-article-card {
+        cursor: pointer;
+        width: 100%;
+        max-width: 300px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        margin: 20px;
+        background-color: rgba(249, 249, 249, 0.9);
+    }
+    .special-article-card:hover {
+        transform: translateY(-5px);
+    }
+    .special-article-card img {
+        width: 100%;
+        height: 360px; 
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        object-fit: cover;
+    }
+    .special-article-card h3 {
+        background-color: black;
+        color: white;
+        padding: 8px 10px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 16px;
+        flex-grow: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+</style>
+<script>
+    window.addEventListener('scroll', function() {
+        const background = document.querySelector('.background-image');
+        const opacity = 1 - window.scrollY / 500; 
+        background.style.opacity = opacity;
+    });
+</script>
+<div class="background-image"></div>
+<div class="content">
+    {% for articulo in articulos %}
+    <div class="special-article-card" onclick="location.href='{% url 'nbacampeones' articulo.id %}';">
+        <img src="{% static 'news/images/'|add:articulo.imagen %}" alt="{{ articulo.titulo }}">
+        <h3>{{ articulo.titulo|truncatewords:10 }}</h3>
+    </div>
+    {% empty %}
+
+    <div class="special-article-card" onclick="location.href='{% url 'finalesnba' %}';">
+        <img src="{% static 'news/images/finales.jpg' %}" alt="Campeones de la NBA">
+        <h3>Finales de la NBA 2024: dónde ver Mavericks vs. Celtics</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'celtics' %}';">
+        <img src="{% static 'news/images/cuarteto.png' %}" alt="Celtics">
+        <h3>¿Son los Celtics de 2024 el equipo con el cuarteto ideal?</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'nbacampeones' %}';">
+        <img src="{% static 'news/images/curry.png' %}" alt="Campeones de la NBA">
+        <h3>Ganadores de las Finales de la NBA Campeones por año</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'kyrie-luka' %}';">
+        <img src="{% static 'news/images/lukayirving.png' %}" alt="Kyrie-Luka">
+        <h3>Cómo los fantasmas de LeBron y Celtics impulsan al dúo Kyrie-Luka</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'mavs' %}';">
+        <img src="{% static 'news/images/doncic.png' %}" alt="mavs">
+        <h3>Aún no sonó la campana: los Mavericks corrigieron todas sus falencias para seguir con vida en Finales NBA</h3>
+    </div>
+        <div class="special-article-card" onclick="location.href='{% url 'libresnba' %}';">
+        <img src="{% static 'news/images/libres.png' %}" alt="libresnba">
+        <h3>Agencia libre NBA 2024: Los 20 mejores jugadores disponibles</h3>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

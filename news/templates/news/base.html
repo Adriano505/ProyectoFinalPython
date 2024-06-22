@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sports News{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'news/styles.css' %}">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background: transparent;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+        .navbar ul li {
+            margin: 0 10px;
+        }
+        .navbar a, .navbar li {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+            text-shadow: 0 0 3px rgba(0,0,0,0.6);
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .navbar a:hover {
+            color: #ccc;
+        }
+        .user-greeting {
+            font-size: 18px; 
+            font-weight: bold;
+            vertical-align: middle;
+            display: flex;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="navbar-left">
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+        </ul>
+        <ul class="navbar-right">
+            {% if user.is_authenticated %}
+                <li class="user-greeting">Hola {{ user.username }}</li>
+                <li><a href="{% url 'about' %}">About Me</a></li>
+                <li><a href="{% url 'user_logout' %}">Salir</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Iniciar Sesión</a></li>
+                <li><a href="{% url 'about' %}">About Me</a></li>
+                <li><a href="{% url 'register' %}">Registrarse</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

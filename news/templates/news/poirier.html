@@ -1,0 +1,91 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>¿QUÉ SIGUE PARA DUSTIN POIRIER?</h1>
+    <h3>‘The Diamond’ Sembró Suspenso Tras La Formidable Guerra Ante Islam Makhachev En UFC 302</h3>
+    <img src="{% static 'news/images/Poirier.jpg' %}" alt="Poirier">
+    <p>Dustin Poirier libró una batalla a pleno corazón por el cinturón ligero pero no pudo contra el grappling de Islam Makhachev en la pelea estelar de UFC 302. Tras la finalización del duelo, ‘The Diamond’ fue sincero: “No sé qué será de mi futuro. Amo este deporte. Pero no sabría por qué objetivo pelear”.</p>
+    <p>El recorrido de Dustin comenzó en peso pluma. Allí se posicionó rápidamente por su poder de nocaut con ambas manos, como lo demostró ante Akira Corassani y por su BJJ, con su predilección por someter mediante la estrangulación D’Arce, como vimos por ejemplo ante Jonathan Brookins.</p>
+    <p>En 2015 Dustin decidió competir en peso ligero, en la decisión más importante de su carrera. ‘The Diamond’ encontró su hogar y brilló como nunca: llegó a ganar nueve peleas de 11 y conoció la gloria al consagrarse campeón interino tras una guerra de cinco asaltos contra Max Holloway en 2019.</p>
+    <p>Ese mismo año peleó contra Khabib Nurmagomedov por la unificación del cinturón. Tuvo sus buenos momentos con combinaciones de box pero el daguestaní impuso su grappling y frustró su primer intento con un mataleón. Sin embargo, el regreso fue brutal: derrotó a Dan Hooker en una de las peleas más divertidas de 2020 y protagonizó una trilogía ante Conor McGregor en 2021. ‘The Diamond’ se llevó la saga y emergió como una súper estrella.</p>
+    <p>La racha de victorias, buen momento y poder de estrella de Dustin le garantizaron una nueva oportunidad por el cinturón pero otra vez el grappling se interpuso en su camino: Charles Oliveira lo sometió con un mataleón en UFC 269.</p>
+    <p>En 2022 recuperó las buenas sensaciones y la energía con un mataleón a Michael Chandler, aunque un año después recibió un duro golpe: Justin Gaethje lo noqueó con una patada alta en el duelo por el cinturón BMF.</p>
+    <p>‘The Diamond’ volvió a demostrar su vigencia este año al noquear al peligroso francés Benoit Saint Denis.</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+
+    
+</div>
+
+{% endblock %}

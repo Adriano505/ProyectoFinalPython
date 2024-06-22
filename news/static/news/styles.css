@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d2d2d2;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+    padding: 10px;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 10px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    display: block;
+}
+
+.navbar ul li a:hover {
+    background-color: #575757;
+}
+
+.navbar-left {
+    display: flex;
+    flex: 1;
+}
+
+.navbar-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+/* Sepramos
+
+/* news/static/news/styles.css */
+
+.article-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.article-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.article-content {
+    text-align: justify;
+}
+
+.articles-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start; /* Alinea los artículos al inicio verticalmente */
+}
+
+.special-article-card, .article-preview {
+    width: 280px; /* Un ancho fijo para todas las tarjetas */
+    height: 350px; /* Altura fija para formar un cuadrado visual */
+    cursor: pointer;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s ease-in-out;
+    border-radius: 5px; /* Bordes redondeados */
+    display: flex;
+    flex-direction: column; /* Organiza la imagen y el texto en una columna */
+    overflow: hidden; /* Oculta cualquier desbordamiento */
+}
+
+.special-article-card img, .article-preview img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Asegura que la imagen cubra bien el espacio sin distorsión */
+}
+
+.special-article-card h3, .article-preview h2 {
+    padding: 10px;
+    margin-top: auto; /* Empuja el texto hacia abajo */
+    text-align: center; /* Centra el texto horizontalmente */
+    background-color: rgba(0,0,0,0.7); /* Fondo semi-transparente para mejor lectura */
+    color: white; /* Texto blanco para contrastar con el fondo oscuro */
+    width: 100%;
+}
+
+.special-article-card:hover, .article-preview:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}

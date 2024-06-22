@@ -1,0 +1,90 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>UFC 302: MAKHACHEV Y POIRIER DAN 'PELEA DE LA NOCHE'</h1>
+    <h3>Kevin Holland También Fue Reconocido Tras Su Impresionante Armbar Este Sábado 1 De Junio</h3>
+    <img src="{% static 'news/images/makvspoi.jpg' %}" alt="makvspoi">
+    <p>UFC 302 fue creciendo en intensidad y drama desde sus primeras preliminares hasta las últimas peleas. En las estelares, destacó la sumisión vía Armbar de Kevin Holland y más de 20 minutos de suspenso y tensión con el duelo estelar por la corona de peso ligero entre Islam Makhachev y Dustin Poirier.</p>
+    <p>Kevin Holland recordó a todos que es un cinturón negro de BJJ con una llave de brazo que figurará en la lista de las mejores sumisiones de 2024. </p>
+    <p>'Trailblazer' parecía sucumbir con la espalda en la lona ante el ground and pound de Michal Oleksiejczuk, pero entonces sorprendió al polaco al capturarle el brazo, estirarlo y presionar hasta finalizarlo. El estadounidense se llevó una victoria por sumisión en el primer round y un bono a la Actuación de la Noche.</p>
+    <p>Islam Makhachev y Dustin Poirier se batieron a puro corazón en un duelo emocionante que tuvo intercambios de boxeo, grappling y mucho corazón.</p>
+    <p>En cinco rounds de combate, Dustin conectó 74 golpes significativos, resistió 11 intentos de derribo y escapó de posiciones peligrosas hasta que en el último asalto no pudo sobrevivir a una estrangulación D'Arce que puso el punto final al cruce, que recibió el honor a 'Pelea de la Noche'.</p>
+    <p>El campeón volvió a demostrar que el grappling es su especialidad, pero que su estilo es completo: conectó 88 golpes significativos, concretó 5 derribos y finalizó al líder en nocauts en las 155 libras. Al reconocimiento económico a 'Pelea de la Noche', Islam le sumó el de Actuación de la Noche, en otro evento inolvidable para él.</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+
+    
+</div>
+
+{% endblock %}

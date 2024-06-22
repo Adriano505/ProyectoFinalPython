@@ -1,0 +1,87 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10; 
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/suiza.png" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>Suiza no le dio chances a Hungría y le ganó en su arranque en la Eurocopa</h1>
+    <p>La determinación de Michel Aebischer, plasmada con una asistencia y un gran gol antes del descanso, marcó decisivamente el partido de este sábado entre Suiza y Hungría, que llegó tarde con un gol de Barnabás Varga.</p>
+    <p>En el tiempo añadido Breel Embolo amarró un triunfo suizo que puede resultar clave para la configuración final del grupo en este tramo inicial de la Eurocopa 2024.</p>
+    <p>La goleada de Alemania frente a Escocia (5-1) en el choque inaugural del torneo realzó la dimensión del duelo de Colonia entre húngaros y helvéticos, pretendientes, antes del inicio, de la segunda plaza.</p>
+    <p>Conscientes de la condición de favoritos, por su carácter de anfitriones pero también por su potencial, del conjunto alemán, las miras del resto de componentes del Grupo A pasan por las otras posiciones que apuntan hacia las eliminatorias de octavos.</p>
+    <p>De ahí la intensidad y el interés con el que tanto el cuadro de Marco Rossi como el de Murat Yakin se tomaron el cara a cara desde el principio. Y encontró el éxito la selección que más lo buscó. Al menos durante la mayoría de los minutos. Hungría tiró la primera mitad, jugó a tirones, amparada en la inspiración del centrocampista del Liverpool Dominik Szoboszlai, que tuvo una aportación intermitente.</p>
+    <img src="{% static 'news/images/suiza.png' %}" alt="España celebra su victoria">
+    <p>De la mano de sus jóvenes figuras, España demostró por qué es uno de los equipos a batir en este torneo. Controlando el juego desde el inicio, el equipo español no solo mostró su capacidad ofensiva, sino también una solidez defensiva que dejó poco espacio para las respuestas de sus rivales.</p>
+    
+    <div class="link-to-article">
+        <h2><a href="{% url 'special_article' %}">De la mano de sus jóvenes figuras, Alemania jugó un partido perfecto y goleó a Escocia</a></h2>
+    </div>
+
+    </div>
+{% endblock %}

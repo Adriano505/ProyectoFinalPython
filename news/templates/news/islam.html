@@ -1,0 +1,91 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>ISLAM MAKHACHEV: "SUEÑO CON SER DOBLE CAMPEÓN"</h1>
+    <h3>El Monarca De Las 155 Libras Quiere Subir A Peso Welter Para Buscar Un Segundo Cinturón Tras Su Triunfo En UFC 302</h3>
+    <img src="{% static 'news/images/islam.jpg' %}" alt="islam">
+    <p>En UFC 302, Islam Makhachev hiló 14 triunfos, la racha activa más extensa de victorias en el róster; defendió el cinturón de peso ligero por tercera ocasión y empató a Khabib Nurmagomedov, Benson Henderson y BJ Penn con cuatro peleas de título ganadas en la división. ¿Qué seguirá para Makhachev?</p>
+    <p>“¿Quién no querría ser doble campeón? Esto es historia. ¿Cuántos campeones dobles hay? El sueño de todos los peleadores es tener un segundo cinturón”.</p>
+    <p>Aunque Islam Makhachev aseguró que aceptará el reto que UFC le ofrezca, dejó clara su preferencia por subir a peso welter y buscar entrar a la élite de dobles monarcas simultáneos:</p>
+    <p>“Este es mi sueño. Quiero ser parte de la historia y que la gente me conozca por ser doble campeón. Si tengo una oportunidad la voy a tomar. En mi opinión, si uno quiere un gran legado debe de tener un segundo cinturón”.</p>
+    <p>El presidente de UFC, Dana White, señaló que el posible próximo rival para el campeón sería Arman Tsarukyan, quien ha ganado nueve de sus últimos 10 combates e hila cuatro triunfos, el más reciente en UFC 300 ante el ex monarca Charles Oliveira.</p>
+    <p>Aunque Islam aceptaría este duelo, considera ‘poco atractiva’ una revancha ante un peleador al que ya superó. Makhachev y Tsarukyan se enfrentaron en 2019 con la victoria por decisión para el daguestaní en un duelo que se llevó bono por ‘Pelea de la Noche’.</p>
+    <p>“No tiene mucho sentido cuando es una revancha. Necesito un nuevo reto, un nuevo desafío. Si es lo que Dana (White) quiere, hagámoslo. No hay problema”.</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+
+    
+</div>
+
+{% endblock %}

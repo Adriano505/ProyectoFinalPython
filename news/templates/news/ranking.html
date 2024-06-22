@@ -1,0 +1,103 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>F1: Ranking de pilotos luego del GP de Canadá</h1>
+    <h3>Canadá vio a Max Verstappen anotarse su 6ta victoria de la temporada en un domingo de Fórmula 1 que lo tuvo todo en el circuito Gilles Villeneuve.</h3>
+    <img src="{% static 'news/images/Ranking.png' %}" alt="ranking">
+    <p>Para armar esta lista tomamos en cuenta el trabajo hecho a lo largo del fin de semana de Gran Premio, así como el auto y la experiencia de cada pilotos, luego no es lo mismo un error de un piloto novato, a los veteranos, así como no es lo mismo remontar con un Red Bull que con un Williams.</p>
+    <p>1 Max Verstappen</p>
+    <p>El campeón sigue demostrando que pertenecer una clase aparte, en un fin de semana en que el Red Bull estuvo lejos de ser el monoplaza más veloz o quizás el más estable, el neerlandés pudo salir desde la P2 y se mantuvo en la pelea el tiempo suficiente como para aprovechar al máximo el primer Coche de Seguridad, luego de ahí todo fue dominio del tres veces campeón que ve extendida su racha de no pasar dos carreras seguidas sin subir a la parte más alta del podio, racha que comenzó en el GP de Austria 2022.</p>
+    <p>2 George Russell</p>
+    <p>El británico tuvo un buen fin de semana en el que consiguió la segunda pole de su carrera conduciendo un Mercedes que dio un salto inesperado tras los resultados en el primer tercio de la temporada, aunque varios errores le costaron la victoria y por poco su lugar en el podio, Russell pudo recuperar su P3 adelantando a Lewis Hamilton en las últimas vueltas de la carrera consiguiendo el primer podio de Mercedes en 2024.</p>
+    <p>3 Lando Norris</p>
+    <p>Dicen que lo que la vida te da, a veces te lo quita y parecería que esto fue lo que le pasó a Lando Norris con el primer Coche de Seguridad que no sabemos si error de piloto o del equipo pero no entró a cambiar los neumáticos mientras Verstappen, Russell y Piastri que venían detrás si.</p>
+    <p>4 Esteban Ocon</p>
+    <p>Ocon continúa con su racha de puntuar en Canadá en todas sus participaciones a pesar de salir desde la P18, andar en un Alpine y contar con una orden de equipo que le entrego la P9 a su compañero Pierre Gasly, chapeau para el francés quien hizo el stint más largo de la carrera al no entrar en la vuelta 25 cuando salió el primer Coche de Seguridad completando 44 vueltas con sus neumáticos intermedios.</p>
+    <p>5 Lewis Hamilton</p>
+    <p>Hamilton apuntaba a anotarse su primera pole desde la conseguida en Hungría 2023, pero no pudo conseguir el tiempo en Q3 quedando P6 en una sesión que se entendía que podría salir con el mejor tiempo, el siete veces campeón hizo unos comentarios sobre la temperatura de sus neumáticos en la Qualy y también sobre la estrategia de Mercedes en carrera, pero se anotó una P4 que por momentos pareció ser otro podio en el circuito donde obtuvo su primera victoria.</p>
+    <p>6 Oscar Piastri</p>
+    <p>Fin de semana decente para el joven australiano quien estuvo a la caza de los Mercedes en las últimas vueltas de la carrera pero no pudo recuperar su posición de salida, la victoria de Piastri llegará esta temporada, pero Canadá demostró que aún le falta aprendizaje en cuanto a ritmo y manejo de neumáticos se refiere.</p>
+    <p>7 Daniel Ricciardo</p>
+    <p>Si Red Bull se imagina el rendimiento de Daniel Ricciardo en Canadá habrían renovado an Yuki Tsunoda a principios de temporada. El autraliano hizo una sesión de clasificación de las que nos recordó sus tiempos en Renault y Red Bull y a pesar de perder varios posiciones, pudo conseguir valiosos puntos en la búsqueda de Visa Cash App RB de salir de la parte media de la tabla de constructores.</p>
+    <p>8 Fernando Alonso</p>
+    <p>Actuación regular del español de quien siempre se ha dicho que es el mejor piloto de la parrilla en condiciones de lluvia, pero en la carrera no vimos nada cerca del Alonso de antaño, lo que si hay que mencionar es que su pelea con Lewis Hamilton por la P5 fue de los momentos más emocionantes del domingo.</p>
+    <p>9 Lance Stroll</p>
+    <p>Primera ocasión en la que el canadiense suma puntos en su carrera local, Stroll se mantuvo detrás de su compañero de equipo consiguiendo 14 puntos con los que Aston Martin se despega un poco más de Visa Cash App RB.</p>
+    <p>10 Alex Albon</p>
+    <p>Pasar a Q3, anotarse el mejor adelantamiento no solo de la carrera, si no, de lo que va de temporada, inocente víctima del trompo de Carlos Sainz, Albon estaba en posición de poder sumar para Williams por segunda carrera consecutiva, a pesar del DNF, Albon se gana su lugar en el top 10.</p>
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'news/base.html' %}
+
+{% load static %}
+
+{% block title %}Inicio - Sports News{% endblock %}
+
+{% block content %}
+<style>
+        body {
+        background-image: url("{% static 'news/images/dondo.jpg' %}");
+        background-size: cover;
+        transition: background-image 0.5s;
+    }
+    .navbar {
+        background: transparent;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .navbar-right {
+        flex: 1;
+        text-align: right;
+    }
+    .content {
+        display: flex;
+        width: 100%;
+        margin: 20px 0;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .about-section, .mission-section {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    .some-element {
+    background-image: url('path/to/image.jpg');
+    background-size: cover; 
+    background-size: contain;
+}
+
+
+    .profile-photo {
+        width: 20vw; 
+        height: auto;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="about-section">
+    <h1>Sobre Mí</h1>
+    <img src="{% static 'news/images/Me.jpeg' %}" alt="Tu Foto" class="profile-photo">
+    <p>Hola, soy Adriano. Bienvenido a mi página informativa.</p>
+    <p>Soy estudiante de programación, estoy dando mis primeros pasos y esta es una muestra de lo que he aprendido en estos últimos 3 meses. Como me gustan todos los deportes, pensé en hacer una página que cubra cada uno de los deportes en los cuales estoy interesado.</p>
+    <p>Considero que uno tiene que hacer lo que le gusta porque lo hace con más ganas. Y qué mejor para mí que hablar de los deportes que me gustan, algo que me apasiona.</p>
+    <p>Espero que les guste mi página, está hecha con muchas ganas y cariño.</p>    
+</div>
+{% endblock %}

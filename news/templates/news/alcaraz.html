@@ -1,0 +1,85 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>La promesa de Alcaraz tras proclamarse en Roland Garros</h1>
+    <img src="{% static 'news/images/alcaraz.jpg' %}" alt="alcaraz">
+    <p>Las promesas hay que cumplirlas, tal como hará el español Carlos Alcaraz (3º del ranking ATP), que se consagró este domingo en Roland Garros al vencer al alemán Alexander Zverev (4º), y se tatuará la fecha de su inolvidable coronación, al igual que en sus títulos en el US Open 2022 y Wimbledon 2023.</p>
+    <p>Una vez bajada la euforia y con la mente un poco más calma, el murciano, de 21 años, confirmó que se grabará en la piel la Torre Eiffel junto al 9 de junio del 2024 en su tobillo izquierdo. "Fue un gran viaje desde el primer partido. Quería ganar este torneo desde que era niño. Veo esto desde que tenía 5 o 6 años, el sueño se hizo realidad. Pronto otro tatuaje, con la Torre Eiffel", aseguró en conferencia de prensa el dueño de 14 títulos.</p>
+    <p>"Tranquilicé a mi familia, sólo lo haré por el primer triunfo de cada Grand Slam. No creo que mi madre me diga nada por el motivo que es", dijo entre risas el pupilo de Juan Carlos Ferrero, que rompió varias marcas referidas a su corta edad, destacándose que se convirtió en el más joven en proclamarse en torneos Major en las tres superficies.</p>
+    <p>Cabe recordar que el ex número 1 del mundo, que escalará hasta el segundo escalafón del ordenamiento, ya tiene dos tatuajes con las fechas de sus otras dos grandes consagraciones, aunque en la del césped británico le sumó un frutilla, en alusión a la tradicional fruta londinense.</p>
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+    
+</div>
+
+{% endblock %}

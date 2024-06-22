@@ -1,0 +1,109 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/NBA" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>Ganadores de las Finales de la NBA y el título, campeones por año</h1>
+    <p><strong>Los Angeles Lakers y Boston Celtics han ganado la mayor cantidad de campeonatos en la historia de la NBA, con 17 títulos cada uno.</strong> Aquí hay otros campeones que se remontan a 1950:</p>
+    <p>2023 -- Denver Nuggets sobre el Miami Heat<br>
+       2022 -- Golden State Warriors sobre los Boston Celtics<br>
+       2021 -- Milwaukee Bucks sobre los Phoenix Suns<br>
+       2020 -- Los Angeles Lakers sobre el Miami Heat<br>
+       2019 -- Toronto Raptors sobre los Golden State Warriors<br>
+       2018 -- Golden State Warriors sobre los Cleveland Cavaliers<br>
+       2017 -- Golden State Warriors sobre los Cleveland Cavaliers<br>
+       2016 -- Cleveland Cavaliers sobre los Golden State Warriors<br>
+       2015 -- Golden State Warriors sobre los Cleveland Cavaliers<br>
+       2014 -- San Antonio Spurs sobre el Miami Heat<br>
+       2013 -- Miami Heat sobre los San Antonio Spurs<br>
+       2012 -- Miami Heat sobre los Oklahoma City Thunder<br>
+       2011 -- Dallas Mavericks sobre el Miami Heat<br>
+       2010 -- Los Angeles Lakers sobre los Boston Celtics<br>
+       2009 -- Los Angeles Lakers sobre el Orlando Magic<br>
+       2008 -- Boston Celtics sobre los Los Angeles Lakers<br>
+       2007 -- San Antonio Spurs sobre los Cleveland Cavaliers<br>
+       2006 -- Miami Heat sobre los Dallas Mavericks<br>
+       2005 -- San Antonio Spurs sobre los Detroit Pistons<br>
+       2004 -- Detroit Pistons sobre los Los Angeles Lakers<br>
+       2003 -- San Antonio Spurs sobre los New Jersey Nets<br>
+       2002 -- Los Angeles Lakers sobre los New Jersey Nets<br>
+       2001 -- Los Angeles Lakers sobre los Philadelphia 76ers<br>
+       2000 -- Los Angeles Lakers sobre los Indiana Pacers<br>
+       1999 -- San Antonio Spurs sobre los New York Knicks<br>
+       1998 -- Chicago Bulls sobre el Utah Jazz</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'special_article' %}">Explora más sobre la historia y hazañas de la NBA</a></h2>
+    </div>
+
+    
+</div>
+
+{% endblock %}

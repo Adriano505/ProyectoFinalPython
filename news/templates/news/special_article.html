@@ -1,0 +1,58 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .special-article {
+        max-width: 800px; 
+        margin: auto;
+        padding: 20px; 
+        background-color: #f9f9f9;
+        border-radius: 8px; 
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+    }
+
+    .special-article h1 {
+        text-align: center;
+        margin-bottom: 20px; 
+    }
+
+    .special-article p {
+        text-align: justify; 
+        line-height: 1.6;
+        margin-bottom: 15px; 
+    }
+
+    .special-article img {
+        display: block; 
+        max-width: 100%; 
+        height: auto; 
+        margin: 10px auto 20px; 
+    }
+</style>
+
+<div class="special-article">
+    <h1>De la mano de sus jóvenes figuras, Alemania jugó un partido perfecto y goleó a Escocia en el inicio de 'su' Eurocopa</h1>
+    <p>Impulsado por los golazos de los jóvenes Florian Wirtz y Jamal Musiala, Alemania goleó 5 a 1 a Escocia en el partido inaugural de la Eurocopa 2024, disputado en Múnich. Kai Havertz, Niclas Füllkrug y Emre Can completaron el triunfo local en el encuentro que contó con transmisión en vivo por Star+ (solo para Sudamérica).</p>
+    <img src="{% static 'news/images/special_image.jpg' %}" alt="Escena del partido" id="mainImage" onclick="changeImage()">
+    <p>Al equipo de Julian Nagelsmann no le pesó el contexto. Ni la localía ni sus últimos fracasos internacionales, con un par de eliminaciones en fases de grupos mundialistas y una salida en octavos de final a nivel continental en esta década. De entrada, en el Allianz Arena de Múnich, pasó por arriba al elenco británico, que apenas insinuó un intento de dominio durante cuatro o cinco minutos.</p>
+    <p>Los germanos tomaron el control de la posesión, adelantaron sus líneas y se acomodaron en campo rival. Allí, pesó mucho la inventiva de Wirtz y Musiala, que parecen llevar la posta para conquistar Europa por cuarta vez en su historia (1972, 1980, 1996).</p>
+    {% if request.user.is_superuser %}
+    <div class="link-to-article">
+        <a href="{% url 'delete_article' slug='suiza' %}" onclick="return confirm('¿Estás seguro de que deseas eliminar este artículo?');">Eliminar este artículo</a>
+    </div>
+    {% endif %}
+    
+</div>
+
+<script>
+    function changeImage() {
+        var myImage = document.getElementById('mainImage');
+        if (myImage.src.includes('special_image.jpg')) {
+            myImage.src = '{% static 'news/images/other_image.jpg' %}'; // 
+        } else {
+            myImage.src = '{% static 'news/images/special_image.jpg' %}';
+        }
+    }
+</script>
+{% endblock %}

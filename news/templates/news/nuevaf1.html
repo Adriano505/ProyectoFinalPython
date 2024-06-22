@@ -1,0 +1,91 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>F1 2026 con autos más chicos, ligeros, sustentables y no DRS</h1>
+    <h3>La Fórmula 1 publicó su cambio de reglamento para 2026 que traerá autos ligeramente más chicos, más ligeros, sustentables y desaparece el DRS</h3>
+    <img src="{% static 'news/images/autosnuevos.jpg' %}" alt="autosnuevos">
+    <p>La Fórmula 1 publicó las regulaciones técnicas para sus autos, las cuales entrarán en vigor en 2026 y las cuales están enfocadas en el concepto de “coche ágil” menos pesado, menos grande, con énfasis en sustentabilidad, con un motor híbrido más potente y sin DRS, además de poner énfasis en la habilidad de piloto.</p>
+    <p>El objetivo de las nuevas reglas será que haya más competencia, que los autos puedan correr más cerca gracias a aerodinámica activa y aplicación de energía extra lo cual sustituirá al actual DRS (Drag Reduction System, por sus siglas en inglés), algo similar al sistema ‘Push to Pass’ de Indycar.</p>
+    <p>Otro objetivo es reducir el aire sucio o turbulencia que se forma detrás de los autos actuales y que los hace muy difícil seguir de cerca por lo de atrás, uno de los mayores problemas que se enfrentan en las carreras actuales de F1 y que reducen mucho la posibilidad de rebases.</p>
+    <p>“Estas regulaciones marcan un momento significativo en el futuro de nuestro deporte, ya que esperamos una nueva generación de autos y unidades de potencia que apunta a brindarles a nuestros fanáticos carreras más cercanas y emocionantes. La nueva unidad de energía híbrida alimentada de forma sostenible presenta una gran oportunidad para la industria automotriz mundial”, cita el comunicado de la FIA a Stéfano Domenicali, CEO de la F1.</p>
+    <p>El Director Técnico de Monoplazas de la FIA, Nikolas Tombazis, añadió: “Con este conjunto de regulaciones, la FIA ha buscado desarrollar una nueva generación de coches que estén plenamente en contacto con el ADN de la Fórmula 1: coches que sean ligeros, sumamente rápidos y ágiles, pero que también sigue estando a la vanguardia de la tecnología y, para lograrlo, trabajamos hacia lo que llamamos un concepto de “automóvil ágil”. En el centro de esa visión se encuentra una unidad de potencia rediseñada que presenta una división más equitativa entre la potencia derivada del elemento de combustión interna y la energía eléctrica.</p>
+    <p>“En lo que respecta al chasis, hemos conseguido reducir el tamaño y el peso del coche en 30 kilográmos, lo que da como resultado un coche mucho más dinámico. Además, estamos introduciendo dos nuevas e interesantes características para mejorar las carreras: aerodinámica activa para lograr una resistencia muy baja en las rectas. Y el sistema de anulación manual que proporcionará a los conductores una ráfaga de energía de la batería cuando lo necesiten cuando estén lo suficientemente cerca del automóvil que les precede.</p>
+    <p>“Más ligero, más potente y más centrado en la habilidad del piloto, el Reglamento Técnico FIA Fórmula 1 2026 ha sido diseñado para ofrecer carreras más cercanas entre los pilotos, aumentar la competencia entre equipos y mejorar el espectáculo. Además, hemos optado por un mayor componente eléctrico. Del motor, un coche más eficiente en general y combustibles totalmente sostenibles, como parte de nuestro impulso hacia un futuro más sostenible para nuestro deporte”.</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+
+    
+</div>
+
+{% endblock %}

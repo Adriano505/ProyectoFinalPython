@@ -1,0 +1,137 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>¿Qué pilotos tienen contrato y quiénes pueden despedirse de la F1?</h1>
+    <h3>El mercado de pilotos de la Fórmula 1 gira y gira. Hay 9 lugares disponibles de 20 posibles, una vez que Red Bull firmó a Sergio 'Checo' Pérez y que RBApp tomó la opción de un año más para Yuki Tsunoda.</h3>
+    <img src="{% static 'news/images/Pilotos.png' %}" alt="pilotos">
+    <p>El mercado de pilotos de la Fórmula 1 gira y gira. Muchos asientos no tienen dueño y la rebatinga por ellos a veces es más furiosa que la acción en la pista. Son 9 lugares disponibles de 20 posibles, una vez que Red Bull firmó a Sergio 'Checo' Pérez y que RBApp tomó la opción de un año más para Yuki Tsunoda.</p>
+    <p>Es decir, hay 9 volantes que no saben todavía dónde correrán en 2025 o si saldrán de la F1. A continuación, te presentamos el estatus del mercado de pilotos, qué pilotos tienen contrato y quién pueden despedirse de la F1…</p>
+    <p>Estatus actual: Firmado hasta 2028
+
+        Rumores: Tras la lucha de poder al interior de Red Bull y las controversias entre su padre y Christian Horner, personajes como Toto Wolff han dicho, al menos un par de veces que podría dejar el equipo antes de cumplir su contrato, lo cual no parece que pueda suceder hasta 2026. También, la salida de Adrian Newey del equipo es algo que evidentemente lo debilita y es otro argumento para que Max no esté del todo a gusto.
+        
+        Sergio Pérez
+        
+        Estatus actual: Firmó extensión de contrato hasta 2026 (Aunque Christian Horner habló de un 1+1).</p>
+    <p>Charles Leclerc
+
+        Estatus actual: Con contrato firmado, al menos hasta 2026.
+        
+        Rumores: La posición de Leclerc es muy estable, pero con la llegada de Lewis Hamilton existe la expectativa de saber cómo responderá el monegasco.</p>
+    <p>Carlos Sainz
+
+        Estatus actual: Acaba contrato con Ferrari en 2024 y ya es oficial que será sustituido por Lewis Hamilton.
+        
+        Rumores: A Sainz se le vinculaba con los tres mejores asientos disponibles en el mercado de pilotos de 2025, pero ahora parece estar más cerca de Williams o Sauber-Audi, en su defecto.
+        
+        El director de Williams, James Vowles ya dijo que Sainz es su opción número uno. Mientras que el madrileño declaró en Canadá que él sabía hace tiempo (no dijo cuánto) que había dejado de ser opción de Red Bull y Mercedes.</p>
+    <p>Lewis Hamilton
+
+        Estatus actual: Termina contrato con Mercedes en 2024 y ya firmó con Ferrari, por al menos dos años.
+        
+        Asiento disponible
+        
+        Candidatos: Andrea Kimi Antonelli.
+        
+        Rumores: Con Hamilton ya más preocupado por su Ferrari se hará de los servicios de Adrian Newey que por Mercedes, el equipo alemán se toma con calma la elección del sucesor del siete veces campeón del mundo.
+        
+        Toto Wolff llegó a mencionar a Fernando Alonso como una opción muy osada hacia la veteranía, pero el español ya está amarrado con Aston Martin.
+        
+        Al mismo tiempo, Wolff habló de Carlos Sainz, pero su plan real es el adolescente Andrea Kimi Antonelli, quien actualmente corre en F2 y tiene 17 años.
+        
+        No es coherente pensar en darle el Mercedes a Antonelli como novato en 2025, por lo que buscarían a un piloto a un año, tal vez con opción a un segundo en lo que el joven sensación madura en un equipo chico.
+        
+        Hay voces que especulan que Valtteri Bottas sería un piloto de transición ideal, que es rápido, confiable y que conoce bien al equipo. Otros dicen que Esteban Ocon al ser representado, como Bottas, por la empresa de Wolff, es otra opción dúctil y a modo para Mercedes, al menos temporalmente, pero el francés ha perdido mucho cartel por sus problemas con Alpine y más bien suena para Haas.</p>
+    <p>George Russell
+
+        Estatus actual: Firmado hasta 2025.
+        
+        Rumores: Recibiría una oferta de extensión al final de 2024.</p>
+    <p>Lando Norris
+
+        Estatus actual: Firmado a “largo plazo”, sin especificar cuántos años.
+        
+        Rumores: Sólo un movimiento de Max Verstappen fuera de Red Bull podría hacer que Norris dejara McLaren en algún momento, lo cual, primero sería muy costoso para quien lo tomara. Christian Horner ha alabado al inglés y ha dicho que le encantaría tenerlo en el equipo en algún momento.</p>
+    <p>Oscar Piastri
+
+        Estatus Actual: Firmado hasta 2026
+        
+        Rumores: No hay.</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+
+    
+</div>
+
+{% endblock %}

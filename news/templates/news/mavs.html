@@ -1,0 +1,89 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>Aún no sonó la campana: los Mavericks corrigieron todas sus falencias para seguir con vida en Finales NBA</h1>
+    <p>Cada partido de playoffs es una historia diferente. Esta máxima, que conocemos hace décadas, suele ser la menos asimilada por los fanáticos de esta Liga. Porque el viernes por la noche, segundos antes de empezar el cuarto juego de las Finales, la barrida de los Boston Celtics ante los Dallas Mavericks era inminente. 3-0 arriba, un lapidario récord de 156-0 en eliminatorias que comenzaron con tres triunfos en fila para una de las partes, y una diferencia de solidez abrumadora entre ambos equipos.</p>
+    <p>Sin embargo, esto es NBA. Y las cosas no terminan hasta que terminan.</p>
+    <p>Los Mavericks enviaron un mensaje: aún no sonó la campana. No solo ganaron el cuarto partido, sino que fue la tercera victoria de mayor amplitud en la historia de Finales NBA (122-84). Fue como si todos los planetas se alinearan a tiempo para evitar el colapso. Fue corregir todo para que despierte lo hasta ahora inexistente: energía, defensa, ataque a la pintura y lanzamientos a distancia.</p>
+    <img src="{% static 'news/images/doncic.png' %}" alt="Luka">
+    <p>Empecemos por el primer punto: la energía. La pasión con la que este viernes jugó Dallas. Su primer tiempo, completo, fue un mandato de esperanza. Acorralado contra el rincón, evitó el nocáut con un upper-cut a tiempo para regresar a escena. Para volver a pensar que el milagro, que aún se ve lejos, puede ser posible.</p>
+    <p>Los Celtics, por otro lado, jamás encontraron la llave de este partido. Erráticos, dispersos, relajados, perdieron fluidez y se apagaron rápido, quizás con la tranquilidad a cuestas de tener, al menos, tres salvavidas más para evitar el hundimiento.</p>
+    <p>Luka Doncic, esta vez, tuvo compañía. Y no solo Kyrie Irving. Aparecieron los demás, principalmente Derek Lively II, un titán en la zona pintada. Dominó por completo y aprovechó, por supuesto, la nueva ausencia del letón Kristaps Porzingis, anunciado de regreso para este partido pero sin minutos.</p>
+    <p>La defensa de los Celtics, fundamental en esta eliminatoria, brilló por su ausencia. Un poco por deficiencias propias y mucho más por virtud de los Mavericks, lo que abre la puerta a la pregunta fundamental: ¿Puede extender este estilo agresivo en su nueva visita a Boston?</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>Jannik Sinner: horario y cómo ver el debut del N°1 del mundo en Halle</h1>
+    <img src="{% static 'news/images/sinner.png' %}" alt="Murray">
+    <p>Jannik Sinner, número uno del ranking mundial ATP, estrenará su condición de mejor jugador del mundo en el torneo de Halle (Alemania). El italiano se presentará, luego de haber sido semifinalista en Roland Garros, ante el neerlandés Tallon Griekspoor.</p>
+    <p>Este partido podrá verse por ESPN en Star+ no antes de las 9.00 am (Argentina), 8.00 am (Chile), 7.00 am (Colombia/Perú) y 6.00 am (México). El mismo se disputará en la cancha central llamada OWL Arena.</p>
+    <p>El historial entre Jannik Sinner y Tallon Griekspoor consta de cuatro encuentros entre ambos, con amplia ventaja para el italiano. Su supremacía es de cuatro partidos contra cero de su rival. Las victorias sucedieron en Rotterdam (en dos ocasiones), Copa Davis y el Masters 1000 de Miami.</p>
+
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>   
+
+</div>
+
+{% endblock %}

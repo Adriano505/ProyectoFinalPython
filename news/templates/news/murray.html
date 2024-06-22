@@ -1,0 +1,88 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>Confirmado: Andy Murray participará en los Juegos Olímpicos de París 2024</h1>
+    <img src="{% static 'news/images/murray.jpg' %}" alt="Murray">
+    <p>Finalmente primó la lógica en la Federación Internación de Tenis (ITF por sus siglas en inglés), que le otorgó este domingo al legendario británico Andy Murray (97°) una de sus invitaciones hacia los Juegos Olímpicos de París 2024, reservadas para campeones Grand Slam o medallistas en ediciones anteriores.</p>
+    <p>Pese a que hace tan solo unos días había expresado no estar 100% seguro respecto a su situación en la emblemática cita, el nacido en Glasgow, Escocia, de 37 años y dueño de 46 títulos, amaneció con una inmejorable noticia al enterarse que compartirá equipo en individuales con sus compatriotas Jack Draper (40°), Cameron Norrie (39°), Daniel Evans (62°) y Katie Boulter (30ª), quienes se estrenarán absolutamente en la competencia.</p>
+    <p>No obstante, el ex número 1 del mundo, que este lunes abandonará el Top 100 por primera vez desde enero de 2022 y disfrutará su quinta experiencia, después de Beijing 2008, Londres 2012, Río 2016 y Tokio 2021, también sueña con presentarse en la modalidad de dobles junto a Evans, al igual que Neal Skupski (12°) y Joe Salisbury (5°), Boulter (476ª) y Heather Watson (47ª), y Harriet Dart (114) y Maia Lumsden (65ª), aunque deberá esperar por la confirmación.</p>
+    <p>Cabe destacar que la decisión del triple medallista olímpico no se coincide con la de su talentosa coterránea Emma Raducanu (209ª), de 21 años, consagrada en el US Open 2021 y aquejada por las lesiones en el último tiempo, la cual declinó la wild card cedida por la organización madre, argumentando que no es el momento indicado.</p>
+
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+
+    
+</div>
+
+{% endblock %}

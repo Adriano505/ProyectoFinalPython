@@ -1,0 +1,102 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>Agencia libre NBA 2024: Los 20 mejores jugadores disponibles</h1>
+    <h3>Aunque la agencia libre de la NBA ha disminuido en poder estelar en los últimos años, la clase de agentes libres de este verano podría destacarse por el máximo anotador en la historia de la liga. Si él rechaza una opción de jugador de 51.4 millones de dólares para 2024-25, LeBron James será agente libre sin restricciones por primera vez desde que se unió a Los Angeles Lakers a través de la agencia libre en 2018.</h3>
+    <img src="{% static 'news/images/libres.png' %}" alt="Libres NBA">
+    <p>Varios agentes libres importantes, en particular el dos veces Jugador Más Valioso de las Finales de la NBA, Kawhi Leonard, ya se han salido de la mezcla al firmar extensiones durante la temporada. Aun así, mientras miramos hacia la agencia libre, que puede comenzar oficialmente después de las Finales de la NBA, cuando los equipos son libres de negociar con sus propios agentes libres, hay un puñado de jugadores de primer nivel que podrían cambiar de equipo, encabezados por el compañero de equipo de Leonard en los LA Clippers, Paul George.</p>
+    <p>La agencia libre no fue un factor clave en la construcción de las cuatro plantillas que llegaron a las finales de conferencia, pero ha sido una herramienta importante para que los New York Knicks se convirtieran en contendientes. Hace un año, firmaron a mi agente libre quinto clasificado, el escolta de los Golden State Warriors, Donte DiVincenzo, y lo vieron disfrutar de una temporada sensacional junto a su compañero añadido en la agencia libre Jalen Brunson en la zona de defensa.</p>
+    <p>1. LeBron James
+        Los Angeles Lakers | F | Opción de jugador
+        WAR proyectado: 24.4</p>
+    <p>2. Paul George
+        LA Clippers | F/G | Opción de jugador
+        WAR proyectado: 23.3</p>
+    <p>3. Tyrese Maxey
+        Philadelphia 76ers | G | Restringido
+        WAR proyectado: 21.6</p>
+    <p>4. Immanuel Quickley
+        Toronto Raptors | G | Restringido
+        WAR proyectado: 20.9</p>
+    <p>5. James Harden
+        LA Clippers | G | No restringido
+        WAR proyectado: 18.4</p>
+    <p>Kentavious Caldwell-Pope de los Nuggets obtiene una buena puntuación según más-menos ajustado, ubicándose en el puesto 53 entre todos los jugadores en los últimos tres años. Eso refleja mejor su valor, particularmente en el lado defensivo para frenar las alas, que las estadísticas menos impresionantes de Caldwell-Pope.</p>
+    <p>Vale la pena mencionar a dos jugadores que se vieron obligados a fichar por el mínimo de veteranos el verano pasado después de reconstruir su valor. Tanto Derrick Jones Jr. de Dallas como Kelly Oubre Jr. de Philadelphia terminaron siendo titulares en los playoffs. Oubre tuvo la tarea de defender a Brunson durante la serie de los 76ers contra los Knicks, mientras que Jones ha sido el mejor defensor del perímetro de los Mavericks durante su camino hacia las finales de la Conferencia Oeste.</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+    
+</div>
+
+{% endblock %}

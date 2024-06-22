@@ -1,0 +1,92 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    .navbar {
+        position: relative; 
+        z-index: 10;
+    }
+
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: fixed; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('{% static "news/images/alcaraz.jpg" %}') no-repeat center center;
+        background-size: cover;
+        transition: background-color 0.5s ease;
+    }
+
+    .special-article {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden; 
+    }
+    .special-article h1, h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .special-article p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+
+    .special-article img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 10px auto 20px;
+    }
+
+    .link-to-article {
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    document.addEventListener('scroll', function() {
+        var opacity = Math.min(0.8, 0.4 + window.pageYOffset / 1000);
+        document.body.style.backgroundColor = 'rgba(0, 0, 0, ' + opacity + ')';
+    });
+</script>
+
+<div class="special-article">
+    <h1>Conor McGregor y su travesía en UFC: de fenómeno a superestrella</h1>
+    <h3>Traza la carrera de Conor McGregor, desde el momento en que Dana White lo conoció y su debut devastador en UFC el 6 de abril de 2013, hasta el presente, incluyendo éxitos históricos y controversias.</h3>
+    <img src="{% static 'news/images/MacGregor.jpg' %}" alt="Libres NBA">
+    <p>El presidente de UFC, Dana White, recuerda la primera vez que escuchó el nombre de Conor McGregor, un nombre que cambiaría la promotora para siempre.</p>
+    <p>White estaba en Dublín para recibir un premio de Trinity College en 2013 cuando invitó a los fanáticos de UFC en Twitter a unirse a él en un pub cercano después de la ceremonia. Las bebidas serían cubiertas por el presidente de UFC.</p>
+    <p>Fue esa noche, el 11 de febrero, cuando escuchó por primera vez el nombre que sería el más comentado en la historia de UFC.</p>
+    <p>"El lugar estaba lleno, lleno de gente", dijo White. "Estuve allí con los fanáticos toda la noche, y todos seguían hablando de Conor McGregor".</p>
+    <p>Cuando voló de regreso a Las Vegas, White preguntó a sus gestores sobre McGregor. Sean Shelby estaba familiarizado con el peso pluma de Dublín, y White voló a McGregor para una reunión.</p>
+    <p>"La primera vez que lo conocí, lo llevamos a Las Vegas y él y yo fuimos a cenar, y me impresionó", dijo White. "Cuando me subí a mi auto, llamé [al entonces propietario de UFC] Lorenzo [Fertitta] y le dije: 'no sé si puede pelear, pero si por lo menos puede lanzar un golpe, será una súperestrella ".</p>
+    <p>McGregor debutaría en UFC dos meses después en Estocolmo, Suecia. Sí pudo lanzar un golpe, y los instintos de White eran proféticos sobre el poder estelar de McGregor.</p>
+    <p>McGregor comenzó una ascensión meteórica que llegó a su punto máximo cuando se convirtió en el primer peleador en la historia de UFC en sostener dos cinturones simultáneamente. Pero eso fue seguido por el espectáculo, la derrota y los problemas legales lejos del Octágono.</p>
+
+    <div class="link-to-article">
+        <h2><a href="{% url 'nbacampeones' %}">Todos los campeones de la NBA</a></h2>
+    </div>
+
+    
+</div>
+
+{% endblock %}
